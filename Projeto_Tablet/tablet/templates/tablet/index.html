@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <form autocomplete="off" method="post">
+        {% csrf_token %}
+        <label>Nome</label>
+        {{form.nome}}
+
+        <label>Sobrenome</label>
+        {{form.sobrenome}}
+
+        <label>Matricula</label>
+        {{form.matricula}}
+
+        <label>CPF</label>
+        {{form.cpf}}
+
+        <label>Senha</label>
+        {{form.senha}}
+
+        <label>Email</label>
+        {{form.email}}
+
+        <button type="submit">salvar</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        div.d1 {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            width: 100%;
+        }
+
+        div.d2 {
+            background-color: #FFF;
+            border-radius: 25px;
+            box-shadow: -1px -1px 8px #dcdcdc, 1px 1px 8px #dcdcdc;
+            margin: 25px;
+        }
+
+        div.d3 {
+            font-family:'Open Sans', sans-serif, Verdana;
+            font-size:22px;
+            color:#4b4b4c;
+            line-height: 30px;
+            margin-top: 5%;
+            valign="top"
+        }
+
+        div.d4 {
+            font-family:'Open Sans', sans-serif, Verdana;
+            font-size:25px;
+            color:#4b4b4c;
+            line-height:30px;
+            font-weight:bold;
+            margin-top: 5%;
+            valign="top"
+        }
+
+        div.d5 {
+            font-family:'Open Sans', sans-serif, Verdana;
+            font-size:13px;
+            color:#71746f;
+            line-height:22px;
+            font-weight: normal;
+            margin-top: 5%;
+            valign="top"
+        }
+
+        div.d6 {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            width: 100%;
+            margin-bottom: 5%;"
+        }
+
+        img {
+            border-radius: 25px 25px 0px 0px;
+            top: 0px;
+            left: 0px;
+        }
+
+        button {
+            background:#3aa54a;
+            border-radius: 40px;
+            font-family:Verdana, Arial;
+            font-size:14px;
+            font-weight: bold;
+            text-transform:uppercase;
+            color:#FFF;
+            width: 75%;
+            height: 65px;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+            -webkit-transform: scale(1);
+            -ms-transform: scale(1);
+            transform: scale(1);
+            transition:all 0.3s ease;
+        }
+
+        button:hover {
+            -webkit-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            transform: scale(1.1);
+            opacity:0.7;
+            transition:all 0.3s ease;
+        }
+
+        a.link {
+            text-decoration:none;
+            color:#FFF;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 65%;
+            text-align: center;
+        }
+
+        div.invalido {
+            font-family:'Open Sans', sans-serif, Verdana;
+            font-size:25px;
+            color: #d81c41;
+            line-height:30px;
+            font-weight:bold;
+            margin-top: 5%;
+            margin-bottom: 5%;
+            valign="top"
+        }
+
+        div.sucesso {
+            font-family:'Open Sans', sans-serif, Verdana;
+            font-size:25px;
+            color: #13db13;
+            line-height:30px;
+            font-weight:bold;
+            margin-top: 5%;
+            margin-bottom: 5%;
+            valign="top"
+        }
+
+        div.nome {
+            font-family:'Open Sans', sans-serif, Verdana;
+            font-size:25px;
+            color:#4b4b4c;
+            line-height:30px;
+            font-weight:bold;
+            margin-top: 5%;
+            valign="top"
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <title>Alterar Senha</title>
+</head>
+<html lang="en">
+
+<body style="background-color: #f7f7f7;">
+    <div class="d1">
+        <div class="d2">
+            <img src="https://ifrs.edu.br/farroupilha/wp-content/uploads/sites/12/2018/01/Logo-IFRS-Campus-Farroupilha-Horizontal-Verde-e-Branco-Logo-clássico-em-.JPG.jpg" height="150" width="395" align="center">
+            <div class="d3" align="center">{{token.criado_por.nome}}</div>
+
+            {% if erro_invalido %}
+                <div class="nome" align="center">{{nome}}</div>
+                <div class="invalido" align="center">Requisição Inválida!</div>
+            {% endif %}
+
+            {% if not erro_invalido and not erro_confirmacao and not senha_alterada %}
+                <form autocomplete="off" method="post">
+                    {% csrf_token %}
+                    <div class="nome" align="center">{{nome}}</div>
+                    <div class="d4" align="center">Nova Senha:<br>{{form.senha}}</div>
+                    <div class="d4" align="center">Confirmação:<br>{{form.confirmacao_senha}}</div>
+                    <div class="d6">
+                        <a class="link">
+                            <button type="submit">SALVAR</button>
+                        </a>
+                    </div>
+                </form>
+            {% endif %}
+
+            {% if erro_confirmacao and not erro_invalido and not senha_alterada %}
+                <form autocomplete="off" method="post">
+                    {% csrf_token %}
+                    <div class="nome" align="center">{{nome}}</div>
+                    <div class="invalido" align="center">Senhas não conferem!</div>
+                    <div class="d4" align="center">Nova Senha:<br>{{form.senha}}</div>
+                    <div class="d4" align="center">Confirmação:<br>{{form.confirmacao_senha}}</div>
+                    <div class="d6">
+                        <a class="link">
+                            <button type="submit">SALVAR</button>
+                        </a>
+                    </div>
+                </form>
+            {% endif %}
+
+            {% if not erro_confirmacao and not erro_invalido and senha_alterada %}
+                <div class="nome" align="center">{{nome}}</div>
+                <div class="sucesso" align="center">Senha alterada com sucesso!</div>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

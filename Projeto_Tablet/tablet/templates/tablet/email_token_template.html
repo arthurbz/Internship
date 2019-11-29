@@ -1,0 +1,15 @@
+<body style="background-color: #f7f7f7; ">
+    <div style="justify-content: center; align-items: center; display: flex; width: 100%;">
+        <div style="background-color: #FFF; border-radius: 25px; box-shadow: -1px -1px 8px #dcdcdc, 1px 1px 8px #dcdcdc; margin: 10px;">
+            <img style="border-radius: 25px 25px 0px 0px;  top: 0px; left: 0px;" src="https://ifrs.edu.br/farroupilha/wp-content/uploads/sites/12/2018/01/Logo-IFRS-Campus-Farroupilha-Horizontal-Verde-e-Branco-Logo-clássico-em-.JPG.jpg" height="150" width="395" align="center">
+                <div style="font-family:'Open Sans', sans-serif, Verdana; font-size:25px; color:#4b4b4c; line-height:30px; font-weight:bold; margin-top: 25px;" valign="top" align="center">{{token.criado_por.nome}} {{token.criado_por.sobrenome}}</div>
+                <div style="font-family:'Open Sans', sans-serif, Verdana; font-size:22px; color:#4b4b4c; line-height:30px; font-weight:bold; margin-top: 5px;" valign="top" align="center">Solicitou troca de senha?</div>
+                <div style="font-family:'Open Sans', sans-serif, Verdana; font-size:13px; color:#71746f; line-height:22px; font-weight:normal; margin-top: 5px;" valign="top" align="center">Clique no botão a seguir para redefinir sua senha<br>Válido até {{token.data_validade}}</div>
+                <div style="justify-content: center;align-items: center;display: flex;width: 100%; margin-bottom: 5%;">
+                    <a href="{{url_externa}}{% url 'tablet:alterar_senha' token.chave %}" style="text-decoration:none; color:#FFF; margin-top: 20px; width: 100%">
+                        <div style="background:#3aa54a; -moz-border-radius: 40px; border-radius: 40px; font-family:Verdana, Arial; font-size:14px; font-weight:bold; text-transform: uppercase; color:#FFF; width:180px; justify-content: center; align-items: center; text-align: center;padding: 16px; margin: auto;">Alterar Senha</div>
+                    </a>
+                </div>
+        </div>
+    </div>
+</body>
